@@ -1,4 +1,6 @@
 include(FetchContent)
+include(CTest)
+enable_testing()
 
 FetchContent_Declare(
   googletest
@@ -21,6 +23,8 @@ target_link_libraries(${PROJECT_NAME}.test
     gtest
     gmock
 )
+
+add_test(NAME ${PROJECT_NAME}.tests COMMAND ${PROJECT_NAME}.test)
 
 install(TARGETS ${PROJECT_NAME}.test
         DESTINATION "${tool_dest}")
